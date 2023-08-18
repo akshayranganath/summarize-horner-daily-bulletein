@@ -1,0 +1,31 @@
+name: Web Scraping and Email
+
+on:
+  schedule:
+    cron: '*/10 * * * *'  # Schedule the workflow to run daily
+
+jobs:
+  scrape_and_email:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
+
+    - name: Set up Python
+      uses: actions/setup-python@v2
+      with:
+        python-version: 3.8
+
+    - name: Install dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install requests beautifulsoup4
+
+    - name: Use API keys from Github Secrets
+      env: 
+        OPENAPI_KEY: ${{ secrets.OPENAPI_KEY }}
+        BOT_TOKEN: ${{ secrets.BOT_TOKEN }}
+        CHAT_ID: ${{ secrets.CHAT_ID }}
+    - name: Run Python script
+      run: python daily_summary.py
