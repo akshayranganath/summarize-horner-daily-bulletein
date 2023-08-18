@@ -28,6 +28,4 @@ jobs:
         OPENAPI_KEY: ${{ secrets.OPENAPI_KEY }}
         BOT_TOKEN: ${{ secrets.BOT_TOKEN }}
         CHAT_ID: ${{ secrets.CHAT_ID }}
-
-    - name: Run Python script
       run: python daily_summary.py
