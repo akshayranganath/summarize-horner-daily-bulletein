@@ -70,7 +70,7 @@ headers = {
   }
 url = f'https://fremontunified.org/horner/news/daily-bulletin-{get_today()}/'
 response = requests.get(url,headers=headers)
-soup = BeautifulSoup(response.text)
+soup = BeautifulSoup(response.text, 'html.parser')
 text = soup.get_text().replace('\n','')
 html_content = get_completion(text)
 
