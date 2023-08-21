@@ -80,7 +80,7 @@ html_content = get_completion(text)
 
 # Send scraped webpage content to Telegram channel
 telegram_api_url = f'https://api.telegram.org/bot{bot_token}/sendMessage'
-message_text = f"Scraped webpage content:\n\n{html_content}"
+message_text = f"Scraped webpage content:\n\n{html_content}\n\nFull notification: {url}"
 
 params = {
     'chat_id': chat_id,
