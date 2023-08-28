@@ -14,9 +14,9 @@ import os
 # In[76]:
 
 
-openai.api_key = os.environ['OPENAPI_KEY']
-bot_token = os.environ['BOT_TOKEN']
-chat_id = os.environ['CHAT_ID']
+openai.api_key = os.environ.get('OPENAPI_KEY') or print('No OPEN API Key found!')
+bot_token = os.environ.get('BOT_TOKEN') or print('No Telegram bot token found!')
+chat_id = os.environ.get('CHAT_ID') or print('No Telegram chat_id found!')
 
 # In[77]:
 
@@ -72,9 +72,12 @@ url = f'https://fremontunified.org/horner/news/daily-bulletin-{get_today()}/'
 response = requests.get(url,headers=headers)
 soup = BeautifulSoup(response.text, 'html.parser')
 text = soup.get_text().replace('\n','')
-html_content = get_completion(text)
+if text.startswith('Page Not Found'):
+    html_content = f'No updates for {get_today()}!'
+else:
+    html_content = get_completion(text)
 
-
+print(html_content)
 # In[80]:
 
 
