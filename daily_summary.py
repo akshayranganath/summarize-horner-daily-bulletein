@@ -41,7 +41,12 @@ def get_completion(prompt=None, model="gpt-3.5-turbo",test=True):
             "content": prompt
         }
     ]
-    response = openai.ChatCompletion.create(
+    client = OpenAI(
+    # This is the default and can be omitted
+        api_key=os.environ.get("OPENAI_API_KEY"),
+    )
+
+    response = client.chat.completions.create(
             model=model,
             messages=messages,
             temperature=0, # this is the degree of randomness of the model's output
