@@ -2,7 +2,7 @@ name: Web Scraping and Email
 
 on:
   schedule:
-    - cron: '30 16 * * 1-5'  # Schedule the workflow to run at 1pm UTC, Monday-Friday
+    - cron: '30 * * * 1-5'  # Schedule the workflow to run at 1pm UTC, Monday-Friday
 
 jobs:
   scrape_and_email:
