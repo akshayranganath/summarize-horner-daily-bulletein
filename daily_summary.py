@@ -41,7 +41,7 @@ def get_completion(prompt=None, model="gpt-3.5-turbo",test=True):
             "content": prompt
         }
     ]
-    client = openai.OpenAI()
+    client = openai.OpenAI(api_key=os.environ.get("OPENAI_API_KEY"),)
 
     response = client.chat.completions.create(
             model=model,
