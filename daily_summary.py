@@ -24,7 +24,7 @@ chat_id = os.environ.get('CHAT_ID') or print('No Telegram chat_id found!')
 def get_today():
     today = date.today()
     #return f'{today.month:02}-{today.day:02}-{today.year}'
-    return f'{today.month:02}-{today.day}-{today.year}'
+    return f'{today.month:02}-{today.day-1}-{today.year}'
 
 
 # In[78]:
