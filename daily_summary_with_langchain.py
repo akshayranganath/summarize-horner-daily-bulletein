@@ -65,8 +65,9 @@ def fetch_horner_website(text: str) -> str:
 
 
 def run_agent():
-    
-    llm = ChatOpenAI(temperature=0,model='gpt-4')
+    openai_api_key = os.environ['OPENAI_API_KEY'] 
+    print(f'open API key: {openai_api_key}')
+    llm = ChatOpenAI(temperature=0,model='gpt-4',openai_api_key=openai_api_key)
     # what tools are available to agent
     tools = load_tools(tool_names= [],llm=llm)
     tools += [fetch_horner_website]
